@@ -1,1 +1,2 @@
-# full backend project
+# Streamly
+## A video streamer backend project
