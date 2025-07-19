@@ -1,15 +1,21 @@
 {
-  "name": "full_project",
+  "name": "main",
   "version": "1.0.0",
-  "description": "full backend project",
+  "description": "",
+  "license": "ISC",
+  "author": "arshiya singh",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
-  "author": "Arshiya",
-  "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.4"
   }
 }
