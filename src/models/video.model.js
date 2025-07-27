@@ -37,5 +37,5 @@ const videoSchema=new Schema({
     timestamps:true
 })
 
-videoSchema.plugin(mongooseAggregatePaginate)
+videoSchema.plugin(mongooseAggregatePaginate) //pagination means splitting a large set of data into smaller chunks (pages), so you can load and view the data in parts — like browsing page 1, page 2, page 3, etc.
 export const video=mongoose.model('video',videoSchema)
