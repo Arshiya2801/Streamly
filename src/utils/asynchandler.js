@@ -1,6 +1,5 @@
 //const asyncHandler=()=>{}
 //it is there to mainly avoid again and again using try and catch with other blocks
-export {asyncHandler}
 
 const asyncHandler=(fn)=>async(req,res,next)=>{
     try{

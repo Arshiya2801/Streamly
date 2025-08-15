@@ -9,8 +9,8 @@ const storage=multer.diskStorage({
     }
 })
 
-const upload = multer({
-    storage:storage 
-}); // for multipart/form-data
+export const upload = multer({
+    storage, 
+}) // for multipart/form-data
 
 
