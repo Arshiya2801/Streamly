@@ -2,6 +2,7 @@ import {asyncHandler} from '../utils/asynchandler.js'
 import { ApiError } from '../utils/ApiError.js';
 import {user, User} from '../models/user.model.js'
 import {uploadOnCloudinary} from '../utils/cloudinary.js'
+import { ApiResponse } from '../utils/ApiResponse.js';
 import { app } from '../app.js';
 
 const registerUser=asyncHandler(async(req,res)=>{
@@ -18,13 +19,13 @@ const registerUser=asyncHandler(async(req,res)=>{
     console.log("email:",email);
     //get the user details and validation not empty
     if(
-        [fullname,email,username,password].some((feild)=>
-        feild?.trim()==="")
+        [fullname,email,username,password].some((field)=>
+        !field || field.trim()==="")
     ){
         throw new ApiError("Please fill all fields",400);
     }
     // check if user already exists
-    const existeduser=User.find({
+    const existeduser=await User.findOne({
         $or:[{username},{email}]
     })
     if(existeduser){
@@ -54,7 +55,7 @@ const registerUser=asyncHandler(async(req,res)=>{
         email,
         avatar:avatar.url,
         coverImage:coverImage.url,
-        username:username.toLowercase(),
+        username:username.toLowerCase(),
         password
     })
     //to remove the certain fields from the response
@@ -68,7 +69,9 @@ const registerUser=asyncHandler(async(req,res)=>{
     }
 
     //return response
-    
+    return res.status(201).json(
+        new ApiResponse(200,createduser,'User registered Successfully')
+    )
 })
 
 export {registerUser}
