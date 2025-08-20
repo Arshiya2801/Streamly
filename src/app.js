@@ -19,4 +19,8 @@ import {userRouter} from './routes/user.routes.js'
 //routes declare
 app.use('/api/v1/users',userRouter);
 
+app.get("/test", (req, res) => {
+  res.send("Server is working");
+});
+
 export {app};
