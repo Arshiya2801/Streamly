@@ -103,7 +103,7 @@ const updatePlaylist = asyncHandler(async (req, res) => {
     if(!playlist){
         throw new ApiError(404, "Playlist not found")
     }
-    return res.status(200).json(new ApiResponse(200,playlist,"Playlist updated successfully"))
+    return res.status(200).json(new ApiResponse(201,playlist,"Playlist updated successfully"))
 })
 
 export {
