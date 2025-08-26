@@ -54,7 +54,7 @@ const getChannelVideos = asyncHandler(async (req, res) => {
         .select("title description views createdAt thumbnail");
 
     return res.status(200).json(
-        new ApiResponse(200,videos,"Channel videos fetched successfully")) 
+        new ApiResponse(201,videos,"Channel videos fetched successfully")) 
 })
 
 export {
